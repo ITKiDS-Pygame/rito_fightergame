@@ -10,7 +10,7 @@ class Enemy:
         self.size = 50
         self.speed = 3
         self.rect = pygame.Rect(posX, posY, self.size, self.size)
-
+    # comment
     def update(self):
         self.rect.y += self.speed
         if self.rect.y >= screen.SCREEN_Y:
