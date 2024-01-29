@@ -7,3 +7,5 @@ FPS = 60
 CLOCK = pygame.time.Clock()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+fire_rate = 50
+fire_timer = fire_rate

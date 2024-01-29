@@ -3,6 +3,7 @@ import random
 import screen
 import player
 import enemy
+import bullet
 
 player = player.Player(screen.SCREEN_X / 2, screen.SCREEN_Y - 60)
 enemy = enemy.Enemy(random.randrange(0, screen.SCREEN_X - 50), -50)

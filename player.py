@@ -11,6 +11,7 @@ class Player:
         self.speed = 5
         self.bullet_list = []
         self.rect = pygame.Rect(startX, startY, self.width, self.height)
+        self.cooldown = 0
 
     def move(self, dir):
         if dir == "left":
@@ -19,7 +20,8 @@ class Player:
             self.rect.x += self.speed
 
     def fire(self):
-        self.bullet_list.append(bullet.Bullet(self.rect.x + self.width / 2, self.rect.y))
+        if len(self.bullet_list) < 4:
+            self.bullet_list.append(bullet.Bullet(self.rect.x + self.width / 2, self.rect.y))
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -28,7 +30,11 @@ class Player:
         if keys[pygame.K_LEFT]:
             self.move("left")
         if keys[pygame.K_SPACE]:
-            self.fire()
+            if self.cooldown % 100 == 0 or self.cooldown == 0:
+                self.fire()
+            self.cooldown += 5
+        else:
+            self.cooldown = 0
 
         if self.rect.x <= 0:
             self.rect.x = 0
