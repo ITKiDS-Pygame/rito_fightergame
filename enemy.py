@@ -1,5 +1,7 @@
 import random
 import pygame
+
+import bullet
 import screen
 
 class Enemy:
@@ -15,6 +17,10 @@ class Enemy:
         self.rect.y += self.speed
         if self.rect.y >= screen.SCREEN_Y:
             self.rect.x = random.randrange(0, screen.SCREEN_X - self.size)
+
+        if len(self.bullet_list) < 1:
+            self.bullet_list.append(bullet.Bullet(self.rect.x + (self.rect.width / 2),
+                                                  self.rect.y + self.rect.height, fired_by="enemy"))
 
     def draw(self):
         pygame.draw.rect(self.surface, self.color, self.rect)
