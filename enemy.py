@@ -9,6 +9,7 @@ class Enemy:
         self.size = 50
         self.speed = 3
         self.rect = pygame.Rect(posX, posY, self.size, self.size)
+        self.bullet_list = []
 
     def update(self):
         self.rect.y += self.speed
