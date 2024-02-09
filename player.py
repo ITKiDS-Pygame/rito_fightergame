@@ -1,6 +1,4 @@
-import pygame
-import screen
-import bullet
+import pygame, screen, bullet
 
 class Player:
     def __init__(self, startX, startY):
