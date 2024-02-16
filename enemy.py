@@ -24,7 +24,6 @@ class Enemy:
         for bull in self.bullet_list:
             bull.update()
             if bull.rect.y >= screen.SCREEN_Y:
-                # lifebar.Health.take_damage(damage=5)
                 self.bullet_list.remove(bull)
 
     def draw(self):
