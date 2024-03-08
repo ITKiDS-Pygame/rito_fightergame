@@ -65,4 +65,4 @@ class Boss:
         for bull in self.bullet_list:
             bull.draw()
 
-        pygame.draw.rect(self.surface, self.color, self.rect)
+        pygame.draw.rect(self.surface, screen.COLORBOSS, self.rect)

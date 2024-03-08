@@ -16,6 +16,6 @@ class collision_manage:
 
         for bullet in self.boss.bullet_list:
             if bullet.rect.colliderect(self.player.rect):
-                self.health.take_damage(damage=5)
+                self.health.take_damage(damage=10)
                 self.boss.bullet_list.remove(bullet)
 
