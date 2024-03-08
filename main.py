@@ -37,17 +37,14 @@ def update():
         if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
             exit(1)
 
-    for bullet in player.bullet_list:
-        if enemy.rect.colliderect(bullet):
-            player.bullet_list.remove(bullet)
-            enemy.rect.x = random.randrange(0, screen.SCREEN_X - enemy.size)
-            enemy.rect.y = -50
-
     draw()
     enemy.update()
     player.update()
     boss.update()
     collision_manage.update()
+
+    if boss.health <= 0:
+        boss =
     # pygame.display.update()
     # screen.SURFACE.fill(screen.BLACK)
 
