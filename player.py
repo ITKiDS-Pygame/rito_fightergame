@@ -5,12 +5,14 @@ class Player:
         self.surface = screen.SURFACE
         self.color = screen.WHITE
         self.width = 50
-        self.height = 20
+        self.height = 60
         self.speed = 5
         self.bullet_list = []
         self.rect = pygame.Rect(startX, startY, self.width, self.height)
         self.cooldown = 0
-
+        self.image = pygame.image.load("images/space_ship.png").convert_alpha()
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        self.image.set_colorkey(self.color)
     def move(self, dir):
         if dir == "left":
             self.rect.x -= self.speed
@@ -49,4 +51,5 @@ class Player:
     def draw(self):
         for bullet in self.bullet_list:
             bullet.draw()
-        pygame.draw.rect(self.surface, self.color, self.rect)
+        #pygame.Rect(self.surface, self.color, self.rect)
+        self.surface.blit(self.image, self.rect)

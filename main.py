@@ -26,11 +26,13 @@ def draw():
     screen.SURFACE.fill(screen.BLACK)
     player.draw()
     enemy.draw()
-    boss.draw()
+    if boss:
+        boss.draw()
     health.draw()
     pygame.display.update()
 
 def update():
+    global boss
     screen.CLOCK.tick(screen.FPS)
     keys = pygame.key.get_pressed()
     for event in pygame.event.get():
@@ -40,13 +42,14 @@ def update():
     draw()
     enemy.update()
     player.update()
-    boss.update()
     collision_manage.update()
+    if boss:
+        if not boss.dead:
+            boss.update()
+        else:
+            boss = None
 
-    if boss.health <= 0:
-        boss =
-    # pygame.display.update()
-    # screen.SURFACE.fill(screen.BLACK)
+
 
 def run():
     while game.game_rurnning():

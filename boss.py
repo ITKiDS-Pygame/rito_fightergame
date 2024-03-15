@@ -18,6 +18,7 @@ class Boss:
         self.fire_counter = 1
         self.fire_rate = 60
         self.moveState = BossMoveState.DOWN
+        self.dead = False
 
     def fire(self):
         self.bullet_list.append(bullet.Bullet(self.rect.x, self.rect.y + self.rect.height, fired_by="enemy"))
@@ -50,7 +51,7 @@ class Boss:
             self.fire_rate = 40
         elif self.health <= 70 and self.health >= 51:
             self.fire_rate = 30
-        elif self.fire_rate <= 50 and self.health >= 31:
+        elif self.health <= 50 and self.health >= 31:
             self.fire_rate = 20
 
         if self.fire_counter % self.fire_rate == 0:
@@ -65,4 +66,4 @@ class Boss:
         for bull in self.bullet_list:
             bull.draw()
 
-        pygame.draw.rect(self.surface, screen.COLORBOSS, self.rect)
+        pygame.draw.rect(self.surface, screen.WHITE, self.rect)

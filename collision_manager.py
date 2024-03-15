@@ -6,6 +6,7 @@ class collision_manage:
         self.player = Player
         self.enemy = Enemy
         self.boss = Boss
+        self.enemy_counter = 0
     def update(self):
         self.collision_player()
     def collision_player(self):
@@ -13,12 +14,16 @@ class collision_manage:
         for bullet in self.player.bullet_list:
             if self.enemy.rect.colliderect(bullet):
                 self.player.bullet_list.remove(bullet)
+                self.enemy_counter += 1
+                print(self.enemy_counter)
                 self.enemy.rect.x = random.randrange(0, screen.SCREEN_X - self.enemy.size)
                 self.enemy.rect.y = -50
 
         for bullet in self.player.bullet_list:
             if self.boss.rect.colliderect(bullet):
-                self.boss.health -= 5
+                self.boss.health -= 20
+                if self.boss.health <= 0:
+                    self.boss.dead = True
                 self.player.bullet_list.remove(bullet)
 
         for bullet in self.enemy.bullet_list:
@@ -30,4 +35,3 @@ class collision_manage:
             if bullet.rect.colliderect(self.player.rect):
                 self.health.take_damage(damage=10)
                 self.boss.bullet_list.remove(bullet)
-
