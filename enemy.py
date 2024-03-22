@@ -5,7 +5,7 @@ class Enemy:
         self.surface = screen.SURFACE
         self.color = screen.WHITE
         self.size = 50
-        self.speed = 3
+        self.speed = 5
         self.rect = pygame.Rect(posX, posY, self.size, self.size)
         self.bullet_list = []
 

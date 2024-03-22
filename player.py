@@ -13,9 +13,13 @@ class Player:
         self.bullet_list = []
         self.rect = pygame.Rect(startX, startY, self.width, self.height)
         self.cooldown = 0
+
+        #スプライト画像
         self.image = pygame.image.load("images/space_ship.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        #無駄な色を削除
         self.image.set_colorkey(self.color)
+
         self.mixer = mixer
 
     def move(self, dir):
