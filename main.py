@@ -1,6 +1,12 @@
-import pygame, collision_manager, random, screen, player, enemy, boss, lifebar, text
+import pygame, collision_manager, random, screen, player, enemy, boss, lifebar, text, mixer
+
 pygame.font.init()
 
+#music関係
+pygame.mixer.init()
+MIXER = mixer.Mixer()
+
+MIXER.music()
 
 class Game():
     def __init__(self):
@@ -14,7 +20,7 @@ class Game():
 
 game = Game()
 
-player = player.Player(screen.SCREEN_X / 2, screen.SCREEN_Y - 60)
+player = player.Player(screen.SCREEN_X / 2, screen.SCREEN_Y - 60, MIXER)
 enemy = enemy.Enemy(random.randrange(0, screen.SCREEN_X - 50), -50)
 boss = boss.Boss(300, -200)
 health = lifebar.Health(screen.SCREEN_X - 150, 50, game)
@@ -67,3 +73,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+

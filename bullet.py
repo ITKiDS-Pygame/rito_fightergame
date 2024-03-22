@@ -1,4 +1,4 @@
-import pygame, screen, player
+import pygame, screen, player, mixer
 
 class Bullet:
     def __init__(self, startX, startY, fired_by="player"):

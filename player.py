@@ -1,7 +1,10 @@
 import pygame, screen, bullet
 
+import mixer
+
+
 class Player:
-    def __init__(self, startX, startY):
+    def __init__(self, startX, startY, mixer):
         self.surface = screen.SURFACE
         self.color = screen.WHITE
         self.width = 50
@@ -13,6 +16,8 @@ class Player:
         self.image = pygame.image.load("images/space_ship.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
         self.image.set_colorkey(self.color)
+        self.mixer = mixer
+
     def move(self, dir):
         if dir == "left":
             self.rect.x -= self.speed
@@ -22,6 +27,7 @@ class Player:
     def fire(self):
         if len(self.bullet_list) < 4:
             self.bullet_list.append(bullet.Bullet(self.rect.x + self.width / 2, self.rect.y))
+        self.mixer.shoot_laser()
 
     def update(self):
         keys = pygame.key.get_pressed()
